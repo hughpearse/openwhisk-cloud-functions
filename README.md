@@ -17,6 +17,28 @@ foo@bar$ vim ./openwhisk/values.yaml
     type: NodePort
 foo@bar$ helm package openwhisk
 foo@bar$ helm install demo openwhisk-1.0.0.tgz 
+```
+
+or deploy with a cluster file
+
+```bash
+foo@bar$ helm repo add openwhisk https://openwhisk.apache.org/charts
+foo@bar$ helm repo update
+foo@bar$ helm install demo openwhisk/openwhisk -n openwhisk --create-namespace -f mycluster.yaml
+```
+
+or alternatively with git
+
+```bash
+foo@bar$ git clone https://github.com/apache/openwhisk-deploy-kube.git
+foo@bar$ cd openwhisk-deploy-kube
+foo@bar$ mv ../mycluster.yaml .
+foo@bar$ helm install demo ./helm/openwhisk -f mycluster.yaml
+```
+
+Configure deployment and open networking
+
+```bash
 foo@bar$ kubectl label nodes --all openwhisk-role=invoker
 foo@bar$ kubectl get all
 foo@bar$ brew install wsk wskdeploy
