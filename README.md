@@ -48,7 +48,7 @@ def main(dict):
 Deploy the cloud function
 
 ```bash
-foo@bar$ wsk -i action create helloPy hello.py --web true --kind python:3
+foo@bar$ wsk -i action create helloPy hello.py --web true --kind python:3 # --web publishes the api to /api/v1/web
 foo@bar$ wsk -i action list
 foo@bar$ wsk -i -v action invoke helloPy --result --param name World
 foo@bar$ wsk -i action get helloPy --url
