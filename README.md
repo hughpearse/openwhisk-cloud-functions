@@ -15,6 +15,7 @@ Configure deployment and open networking
 
 ```bash
 foo@bar$ kubectl label nodes --all openwhisk-role=invoker
+minikube ssh 'sudo ip link set docker0 promisc on'
 foo@bar$ kubectl get all
 foo@bar$ brew install wsk wskdeploy
 foo@bar$ helm status demo
