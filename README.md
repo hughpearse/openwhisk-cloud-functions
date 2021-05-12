@@ -52,7 +52,7 @@ foo@bar$ wsk -i action create helloPy hello.py --web true --kind python:3
 foo@bar$ wsk -i action list
 foo@bar$ wsk -i -v action invoke helloPy --result --param name World
 foo@bar$ wsk -i action get helloPy --url
-foo@bar$ curl -k 'https://127.0.0.1:51540/api/v1/web/guest/default/helloPy' -H "Content-Type: application/json" -d '{"name":"World"}'
+foo@bar$ curl -k 'https://127.0.0.1:51541/api/v1/web/guest/default/helloPy' -H "Content-Type: application/json" -d '{"name":"World"}'
 ```
 
 Cleanup
