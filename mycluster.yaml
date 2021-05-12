@@ -3,7 +3,7 @@ controller:
 whisk:
   ingress:
     type: NodePort
-    apiHostName: "{{ .Values.apiHostName}}"
+    apiHostName: <CLUSTER_IP>
     apiHostPort: 31001
 k8s:
   persistence:
