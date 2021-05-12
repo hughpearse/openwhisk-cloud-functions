@@ -24,6 +24,8 @@ or deploy with a cluster file
 ```bash
 foo@bar$ helm repo add openwhisk https://openwhisk.apache.org/charts
 foo@bar$ helm repo update
+foo@bar$ foo@bar$ kubectl describe nodes | grep InternalIP
+foo@bar$ mycluster.yaml # add your ip
 foo@bar$ helm install demo openwhisk/openwhisk -n openwhisk --create-namespace -f mycluster.yaml
 ```
 
@@ -34,6 +36,15 @@ foo@bar$ git clone https://github.com/apache/openwhisk-deploy-kube.git
 foo@bar$ cd openwhisk-deploy-kube
 foo@bar$ mv ../mycluster.yaml .
 foo@bar$ helm install demo ./helm/openwhisk -f mycluster.yaml
+```
+
+OR even easier
+
+```bash
+foo@bar$ helm repo add openwhisk https://openwhisk.apache.org/charts
+foo@bar$ helm repo update
+foo@bar$ API_IP=$(kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}')
+foo@bar$ helm install demo openwhisk/openwhisk -f mycluster.yaml --set apiHostName=${API_IP}
 ```
 
 Configure deployment and open networking
