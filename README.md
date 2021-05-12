@@ -14,15 +14,15 @@ foo@bar$ helm install demo openwhisk/openwhisk -f mycluster.yaml --set whisk.ing
 Configure deployment and open networking
 
 ```bash
-foo@bar$ kubectl label nodes --all openwhisk-role=invoker
-minikube ssh 'sudo ip link set docker0 promisc on'
+foo@bar$ kubectl label nodes --all openwhisk-role=invoker # for spinning up new resources
+foo@bar$ minikube ssh 'sudo ip link set docker0 promisc on' # Kafka needs hairpin mode
 foo@bar$ kubectl get all
 foo@bar$ brew install wsk wskdeploy
 foo@bar$ helm status demo
 foo@bar$ minikube service demo-nginx --url
     http://127.0.0.1:51540 <= http
     https://127.0.0.1:51541 <= https
-foo@bar$ wsk property set --apihost 127.0.0.1:51541 # input second https ip
+foo@bar$ wsk property set --apihost 127.0.0.1:51541 # input second ip for https
 foo@bar$ wsk property set --auth 23bc46b1-71f6-4ed5-8c54-816aa4f8c502:123zO3xZCLrMN6v2BKK1dXYFpXlPkccOFqm12CdAsMgRU4VrNZ9lyGVCGuMDGIwP # default credential for guest account
 ```
 
